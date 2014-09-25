@@ -1,4 +1,5 @@
-requires a npr git repository in /opt/npr/
 
-in which access is set to http
-and user/email is set to guest/[hidden]
+
+requires:
+   - a npr git repository in /opt/npr/ in which access is set to http and user/email is set to guest/[hidden]
+   - CDE/ from github.com/jhcepas/CDE/ 

@@ -14,22 +14,22 @@ cp $DN/Phy* /tmp/               || { echo 'could not copy example files' ; exit 
 cp $DN/run_npr_example.sh ./    || { echo 'could not copy test script' ; exit 1; }
 
 echo 'building...'
-$DN/CDE/CDE_source/cde -o /tmp/portable_npr sh ./npr_update                            || { echo 'npr update faield' ; exit 1; }
-$DN/CDE/CDE_source/cde -o /tmp/portable_npr sh ./run_npr_example.sh                    || { echo 'npr example failed' ; exit 1; }
+$DN/CDE/cde -o /tmp/portable_npr sh ./npr_update                            || { echo 'npr update faield' ; exit 1; }
+$DN/CDE/cde -o /tmp/portable_npr sh ./run_npr_example.sh                    || { echo 'npr example failed' ; exit 1; }
 
 echo 'Transferring manual files...'
-$DN/CDE/CDE_source/okapi /libicui18n.so.48 "/usr/lib/" /tmp/portable_npr/cde-root/usr/lib/       || { echo 'transfer libicui18n.so.48 failed' ; exit 1; }
-$DN/CDE/CDE_source/okapi /libicui18n.so.48.1.1 "/usr/lib/" /tmp/portable_npr/cde-root/usr/lib/       || { echo 'transfer libicui18n.so.48.1.1 failed' ; exit 1; }
-python $DN/CDE/CDE_source/scripts/okapi_dir.py /opt/npr/ /tmp/portable_npr/cde-root/   || { echo 'transfer dir failed' ; exit 1; }
-python $DN/CDE/CDE_source/scripts/okapi_dir.py /bin/ /tmp/portable_npr/cde-root/       || { echo 'transfer bin failed' ; exit 1; }
+$DN/CDE/okapi /libicui18n.so.48 "/usr/lib/" /tmp/portable_npr/cde-root/usr/lib/       || { echo 'transfer libicui18n.so.48 failed' ; exit 1; }
+$DN/CDE/okapi /libicui18n.so.48.1.1 "/usr/lib/" /tmp/portable_npr/cde-root/usr/lib/       || { echo 'transfer libicui18n.so.48.1.1 failed' ; exit 1; }
+python $DN/CDE/scripts/okapi_dir.py /opt/npr/ /tmp/portable_npr/cde-root/   || { echo 'transfer dir failed' ; exit 1; }
+python $DN/CDE/scripts/okapi_dir.py /bin/ /tmp/portable_npr/cde-root/       || { echo 'transfer bin failed' ; exit 1; }
 
-#python $DN/CDE/CDE_source/scripts/okapi_dir.py /lib/ /tmp/portable_npr/cde-root/
-#python $DN/CDE/CDE_source/scripts/okapi_dir.py /lib64/ /tmp/portable_npr/cde-root/
-#python $DN/CDE/CDE_source/scripts/okapi_dir.py /usr/bin/ /tmp/portable_npr/cde-root/
-#python $DN/CDE/CDE_source/scripts/okapi_dir.py /usr/lib/ /tmp/portable_npr/cde-root/
-#python $DN/CDE/CDE_source/scripts/okapi_dir.py /usr/local/lib/ /tmp/portable_npr/cde-root/
-#python $DN/CDE/CDE_source/scripts/okapi_dir.py /bin/ /tmp/portable_npr/cde-root/
-#python $DN/CDE/CDE_source/scripts/okapi_dir.py /sbin/ /tmp/portable_npr/cde-root/
+#python $DN/CDE/CDE_source//scripts/okapi_dir.py /lib/ /tmp/portable_npr/cde-root/
+#python $DN/CDE/CDE_source//scripts/okapi_dir.py /lib64/ /tmp/portable_npr/cde-root/
+#python $DN/CDE/CDE_source//scripts/okapi_dir.py /usr/bin/ /tmp/portable_npr/cde-root/
+#python $DN/CDE/CDE_source//scripts/okapi_dir.py /usr/lib/ /tmp/portable_npr/cde-root/
+#python $DN/CDE/CDE_source//scripts/okapi_dir.py /usr/local/lib/ /tmp/portable_npr/cde-root/
+#python $DN/CDE/CDE_source//scripts/okapi_dir.py /bin/ /tmp/portable_npr/cde-root/
+#python $DN/CDE/CDE_source//scripts/okapi_dir.py /sbin/ /tmp/portable_npr/cde-root/
 
 cd /opt/npr/
 VERSION=`head -n1 VERSION`
