@@ -17,14 +17,18 @@ echo 'building...'
 $DN/CDE/cde -o /tmp/portable_npr sh ./npr_update                            || { echo 'npr update faield' ; exit 1; }
 $DN/CDE/cde -o /tmp/portable_npr sh ./run_npr_example.sh                    || { echo 'npr example failed' ; exit 1; }
 
+rm /tmp/portable_npr/cde-root/tmp/* -rf       || { echo 'error cleaning tmp' ; exit 1; }
+
 echo 'Transferring manual files...'
 $DN/CDE/okapi /libicui18n.so.48 "/usr/lib/" /tmp/portable_npr/cde-root/usr/lib/       || { echo 'transfer libicui18n.so.48 failed' ; exit 1; }
 $DN/CDE/okapi /libicui18n.so.48.1.1 "/usr/lib/" /tmp/portable_npr/cde-root/usr/lib/       || { echo 'transfer libicui18n.so.48.1.1 failed' ; exit 1; }
 python $DN/CDE/scripts/okapi_dir.py /opt/npr/ /tmp/portable_npr/cde-root/   || { echo 'transfer dir failed' ; exit 1; }
 python $DN/CDE/scripts/okapi_dir.py /bin/ /tmp/portable_npr/cde-root/       || { echo 'transfer bin failed' ; exit 1; }
 
+
+
 #python $DN/CDE/CDE_source//scripts/okapi_dir.py /lib/ /tmp/portable_npr/cde-root/
-#python $DN/CDE/CDE_source//scripts/okapi_dir.py /lib64/ /tmp/portable_npr/cde-root/
+#python $DN/CDE/scripts/okapi_dir.py /lib64/ /tmp/portable_npr/cde-root/
 #python $DN/CDE/CDE_source//scripts/okapi_dir.py /usr/bin/ /tmp/portable_npr/cde-root/
 #python $DN/CDE/CDE_source//scripts/okapi_dir.py /usr/lib/ /tmp/portable_npr/cde-root/
 #python $DN/CDE/CDE_source//scripts/okapi_dir.py /usr/local/lib/ /tmp/portable_npr/cde-root/
